@@ -1,0 +1,47 @@
+# Agent operating system (dot-claude-iff): local only, never in git
+.claude/
+.claude-iff/
+CLAUDE.local.md
+settings.local.json
+.mcp.json
+# Editor
+.vscode/
+# Secrets and local environment
+.env
+*.env
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.pytest-tmp/
+# Build output (CI deploys the site; nothing built is committed)
+/build/
+# Never public: full texts, raw responses, envelopes, local runs
+data/handshakes/
+data/fulltext/pdf/
+data/fulltext/src/
+data/fulltext/doc/
+data/fulltext/views/
+data/fulltext/fig/
+data/raw/
+data/llm/
+*.pdf
+
+# >>> dot-claude-iff managed block: `python3 .claude/tools/distctl.py gitignore --apply` rewrites it; put your own rules outside it
+# visibility: ignored - the agent system stays in this checkout and never reaches git;
+# publish a clean copy with `distctl.py export` (.claude/reference/public-private.md)
+.claude/
+.claude-iff/
+
+# Safety net: secrets and machine-local settings, wherever they appear
+.env
+*.env
+.env*.local
+settings.local.json
+
+# Python caches
+__pycache__/
+*.pyc
+# <<< dot-claude-iff managed block
